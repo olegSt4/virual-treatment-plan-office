@@ -1,0 +1,60 @@
+import React from "react";
+import ColumnHeader from "@src/components/common/headers/ColumnHeader";
+import PlanBaseData from "@src/components/treatmentPlan/manage/doctor/PlanBaseData";
+import PlanStepsDoctor from "@src/components/treatmentPlan/manage/doctor/PlanStepsDoctor";
+import PlanFailedSteps from "@src/components/treatmentPlan/manage/doctor/PlanFailedSteps";
+import {PlanStepType} from "@src/models/newTreatmentPlanModels";
+import styles from "../../../../styles/App.module.scss";
+import {TreatmentPlan} from "@src/models/planManagementModels";
+
+interface PlanDetailedDataProps {
+    planStepTypes: PlanStepType[];
+
+    selectedPlanId: string;
+    selectedPlan?: TreatmentPlan;
+}
+
+const PlanDetailedData = (props: PlanDetailedDataProps) => {
+
+    const renderHint = (hintMessage: string) => {
+        return (
+            <div>
+                <span>{hintMessage}</span>
+            </div>
+        );
+    };
+
+    const getPlanFailedSteps = () => {
+        return (props.selectedPlan?.steps || []).filter(step => step.isFailed);
+    };
+
+    return (
+        <div className={styles.PlanDetailedData}>
+            {!props.selectedPlanId && !props.selectedPlan && renderHint("Виберіть план зі списку")}
+            {props.selectedPlanId && !props.selectedPlan && renderHint(`Не знайдено планів лікування із id [${props.selectedPlanId}]`)}
+            {props.selectedPlanId && props.selectedPlan && (
+                <>
+                    <ColumnHeader
+                        title={`План лікування #${props.selectedPlan?.planId} пацієнта ${props.selectedPlan?.patientFullName}`}
+                    />
+                    <div className={styles.DataContainer}>
+                        <div className={styles.Left}>
+                            <ColumnHeader title={"Загальна інформація"} />
+                            <PlanBaseData selectedPlan={props.selectedPlan} />
+                            <PlanFailedSteps failedSteps={getPlanFailedSteps()} />
+                        </div>
+                        <div className={styles.Right}>
+                            <ColumnHeader title={"Кроки лікування"}/>
+                            <PlanStepsDoctor
+                                planStepTypes={props.planStepTypes}
+                                planId={props.selectedPlanId} steps={props.selectedPlan?.steps || []}
+                            />
+                        </div>
+                    </div>
+                </>
+            )}
+        </div>
+    );
+};
+
+export default PlanDetailedData;

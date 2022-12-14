@@ -1,0 +1,517 @@
+@import 'semantic-ui-css/semantic.css';
+@import "variables";
+
+.Navigation {
+    display: flex;
+    justify-content: revert;
+}
+
+.NavLink {
+    padding: 0 16px;
+}
+
+
+/* -------------------- Common Components Styles -------------------- */
+.PageHeader {
+    font-weight: $font-weight-bold;
+    font-size: $font-size-header;
+
+    padding: $padding-m;
+    display: flex;
+    justify-content: center;
+}
+
+.SubHeader {
+    font-weight: $font-weight-bold;
+    font-size: $font-size-subheader;
+    padding: $padding-s 0;
+
+    display: flex;
+    justify-content: center;
+}
+
+.InfoRow {
+    font-size: $font-size-normal;
+    padding: $padding-xs $padding-s;
+
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid black;
+
+    .InfoRowTitle {
+        font-weight: $font-weight-bold;
+    }
+}
+
+.BiSeparatedRow {
+    font-size: $font-size-normal;
+    padding: $padding-xs $padding-s;
+
+    display: flex;
+    border-bottom: 1px solid black;
+
+    .Left {
+        width: $width-majority;
+    }
+
+    .Right {
+        width: $width-minority;
+    }
+
+    :last-child {
+        border-bottom: none;
+    }
+}
+
+.GeneralData {
+    margin: $margin-m 0;
+}
+
+.FailedStepsList {
+    .FailedStep {
+        border-radius: $border-radius-normal;
+        font-size: $font-size-normal;
+        padding: $padding-s;
+        margin: $margin-s 0;
+        background-color: red;
+
+        .FailedStepName {
+            font-weight: $font-weight-bold;
+        }
+
+        .FailedStepDate {
+            font-size: $font-size-small;
+            margin-left: $margin-s;
+        }
+    }
+
+    .NoFailedSteps {
+        text-align: center;
+        font-size: $font-size-subheader;
+        font-weight: $font-weight-bold;
+        font-style: italic;
+        display: block;
+        margin: $margin-m 0;
+    }
+}
+
+.CurrentSteps {
+    border: 1px solid black;
+    border-radius: $border-radius-normal;
+    padding: $padding-m;
+
+    .Step {
+        border: 1px solid black;
+        border-radius: $border-radius-normal;
+        padding: $padding-s;
+        margin-bottom: $margin-s;
+
+        .StepName {
+            font-weight: $font-weight-bold;
+        }
+
+        .StepDate {
+            font-size: $font-size-small;
+            margin-left: $margin-s;
+        }
+
+        .StepComment {
+            display: flex;
+            justify-content: left;
+            margin: $margin-m;
+
+            .StepCommentTitle {
+                font-weight: $font-weight-bold;
+                margin-right: $margin-s;
+            }
+
+            .StepCommentValue {
+
+            }
+        }
+
+        .StepInput {
+            display: flex;
+            justify-content: left;
+            margin: $margin-m;
+
+            .StepInputName {
+                font-weight: $font-weight-bold;
+                margin-right: $margin-s;
+            }
+        }
+    }
+
+    .FinishedStep {
+        background-color: green;
+    }
+
+    .InactiveStep {
+        background-color: gray;
+    }
+
+    .StepWithButton {
+        display: flex;
+        justify-content: space-between;
+    }
+}
+
+/* -------------------- Patient Card View -------------------- */
+.PatientCardContainer {
+    width: $width-full;
+    display: flex;
+
+    .PatientCardHalf {
+        width: $width-half;
+        margin: 0 $margin-m;
+        border: 1px solid black;
+
+        .Flourography {
+            text-align: center;
+
+            .NoFlourographyData {
+                font-weight: $font-weight-bold;
+                font-size: $font-size-normal;
+                font-style: italic;
+                padding: $padding-m 0;
+                display: block;
+            }
+        }
+
+        .Vaccinations {
+            text-align: center;
+
+            .NoVaccinationsData {
+                font-weight: $font-weight-bold;
+                font-size: $font-size-normal;
+                font-style: italic;
+                padding: $padding-m 0;
+                display: block;
+            }
+        }
+
+        .Disability {
+            display: flex;
+            justify-content: center;
+
+            .DisabilityLevel {
+                font-size: 24px;
+                font-weight: bold;
+                border: 1px solid black;
+                padding: $padding-m;
+            }
+        }
+
+        .ChosenDisability {
+            background-color: gray;
+        }
+
+        .DisabilityName {
+            display: flex;
+            justify-content: space-between;
+            font-weight: $font-weight-bold;
+
+            .DisabilityDescription {
+                font-style: italic;
+            }
+        }
+
+        .Specifics {
+            display: flex;
+            justify-content: left;
+            font-size: $font-size-normal;
+            padding: $padding-xs;
+            border: 1px solid black;
+
+            .SpecificName {
+                padding: 0 $padding-s;
+            }
+        }
+    }
+}
+
+.PatientCardCurrentPlans {
+    font-size: $font-size-normal;
+
+    .NoActivePlans {
+        display: flex;
+        justify-content: center;
+
+        font-weight: 600;
+    }
+
+    .AvailablePlan {
+        text-align: center;
+        padding: $padding-xs $padding-s;
+    }
+
+
+    .NonAvailablePlan {
+        text-align: center;
+        opacity: $opacity-light;
+        padding: $padding-xs $padding-s;
+    }
+}
+
+/* -------------------- All patients cards -------------------- */
+.AllPatientsCardsPageContainer {
+    display: flex;
+    padding: 0 $padding-m;
+
+    .PatientsList {
+        min-width: 300px;
+
+        .PatientSearch {
+            margin-bottom: $margin-s;
+        }
+
+        .PatientBaseCard {
+            font-size: $font-size-normal;
+            font-weight: bold;
+            padding: $padding-xs $padding-xs;
+
+            border: 1px solid black;
+            border-radius: $border-radius-normal;
+
+            margin-bottom: $margin-s;
+        }
+    }
+
+    .PatientCard {
+        width: $width-full;
+    }
+}
+
+/* -------------------- Create new treatment plan -------------------- */
+.NewPlanContainer {
+    display: flex;
+    justify-content: left;
+
+    .NewPlanSteps {
+        width: $width-majority;
+
+        .NewPlanStep {
+            padding: $padding-m;
+            margin-bottom: $margin-m;
+            width: $width-half;
+            border: 1px solid black;
+            border-radius: $border-radius-normal;
+
+            .NewPlanStepInput {
+                display: flex;
+                justify-content: space-between;
+                margin: $margin-m;
+
+                .NewPlanStepInputName {
+                    font-weight: $font-weight-bold;
+                    min-width: 150px;
+                    margin: 0 $margin-s;
+                    padding-top: $padding-s;
+                }
+
+                .NewPlanStepInputOption {
+                    margin: 0 $margin-s;
+                    min-width: 250px;
+
+                    .TextInput {
+                        width: 100%;
+                    }
+                }
+            }
+        }
+
+        .AddPlanButton {
+
+        }
+    }
+
+    .NewPlanSubheader {
+        font-weight: $font-weight-bold;
+        font-size: $font-size-subheader;
+        padding: $padding-m $padding-m;
+
+        display: flex;
+        justify-content: left;
+    }
+
+    .NewPlanInputs {
+        border: 1px solid black;
+        border-radius: $border-radius-normal;
+        padding: $padding-m $padding-s;
+        margin: 0  $margin-s;
+
+        .NewPlanInputItem {
+            display: flex;
+            padding: $padding-s 0;
+        }
+
+        .InputOptionHeader {
+            font-weight: $font-weight-bold;
+            min-width: 150px;
+            margin: 0 $margin-s;
+            padding-top: $padding-s;
+        }
+
+        .InputOption {
+            margin: 0 $margin-s;
+            min-width: 250px;
+
+            .TextInput {
+                width: 100%;
+            }
+        }
+
+        .PatientSpecifics {
+            font-style: italic;
+            font-size: $font-size-normal;
+
+            svg {
+                height: 20px;
+                width: 20px;
+                padding: $padding-xs $padding-xs 0 0;
+            }
+        }
+    }
+}
+
+.SaveButton {
+    position: fixed;
+    right: 5%;
+    bottom: 2%;
+    width: 10%;
+    height: 10%;
+
+    .Button {
+        font-weight: bold;
+        font-size: $font-size-subheader;
+        width: $width-full;
+        height: $height-full;
+    }
+}
+
+/* -------------------- Manage plan by patient -------------------- */
+.PatientTreatmentPlanViewContainer {
+    display: flex;
+    justify-content: space-between;
+
+    .Left {
+        width: $width-minority;
+    }
+
+    .Right {
+        width: $width-majority;
+        margin-left: $margin-m;
+    }
+}
+
+.ModalContainer {
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+
+    .Modal {
+        position: relative;
+        background-color: #fefefe;
+        margin: auto;
+        border: 1px solid #888;
+        width: 80%;
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+        border-radius: $border-radius-normal;
+        padding: $padding-m;
+
+        .StepHeader {
+            font-size: $font-size-subheader;
+            font-weight: $font-weight-bold;
+            text-align: center;
+        }
+
+        .Comment {
+            display: flex;
+            justify-content: left;
+            margin: $margin-m;
+
+            .Hint {
+                font-weight: $font-weight-bold;
+                margin-right: $margin-m;
+            }
+
+            .Input {
+                min-width: 400px;
+            }
+        }
+
+        .StepInput {
+            display: flex;
+            justify-content: left;
+            margin: $margin-m;
+
+            .StepInputName {
+                font-weight: $font-weight-bold;
+                margin-right: $margin-s;
+            }
+
+            .DropDown {
+                max-width: 300px;
+            }
+        }
+    }
+}
+
+/* ------------------- Manage plan by doctor -------------------- */
+.ManageTreatmentsPlanViewContainer {
+    display: flex;
+    justify-content: space-between;
+    margin: $margin-m;
+
+    .AllPlansBaseData {
+        .PlansSearch {
+            .PlansSearchInput {
+                margin-top: $margin-s;
+                min-width: 300px;
+            }
+        }
+
+        .PlanBaseDataBlock {
+            display: block;
+            height: 50px;
+            border: 1px solid black;
+            border-radius: $border-radius-normal;
+            padding: $padding-s;
+            margin: $margin-s 0;
+
+            .PatientInitials {
+                font-size: $font-size-subheader;
+                font-weight: $font-weight-bold;
+                display: block;
+                margin-bottom: $margin-xs;
+            }
+        }
+    }
+
+    .PlanDetailedData {
+        width: $width-majority;
+
+        .DataContainer {
+            display: flex;
+            justify-content: space-between;
+            margin: $margin-m;
+
+            .Left {
+                width: $width-minority;
+            }
+
+            .Right {
+                width: $width-majority;
+                margin-left: $margin-m;
+                font-size: $font-size-normal;
+            }
+        }
+    }
+}
